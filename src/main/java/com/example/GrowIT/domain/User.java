@@ -2,6 +2,7 @@ package com.example.GrowIT.domain;
 
 import com.example.GrowIT.domain.common.BaseEntity;
 import com.example.GrowIT.domain.enums.Provider;
+import com.example.GrowIT.domain.enums.Role;
 import com.example.GrowIT.domain.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -45,7 +46,13 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Provider provider;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserTerm> userTerm;
+    private List<UserTerm> userTerms;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Diary> diaries;
 
 }

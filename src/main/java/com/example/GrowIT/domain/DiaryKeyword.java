@@ -1,6 +1,5 @@
 package com.example.GrowIT.domain;
 
-import com.example.GrowIT.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,21 +8,21 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class UserTerm extends BaseEntity {
+public class DiaryKeyword {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Boolean agreed;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "diary_id")
+    private Diary diary;
 
+    /* 임시 주석
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "term_id")
-    private Term term;
+    @JoinColumn(name = "keyword_id")
+    private Keyword keyword;
+
+     */
 
 }
