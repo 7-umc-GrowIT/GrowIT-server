@@ -21,25 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Gro", description = "Gro 관련 API")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("characters")
+@RequestMapping("/characters")
 public class GroController {
 
 //    private final GroService groService;
 
+    @PostMapping("")
     @Operation(summary = "그로 캐릭터 생성", description = "사용자의 그로 캐릭터를 생성합니다.")
-    @ApiResponses(value = {
+    @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(
                     responseCode = "COMMON200",
                     description = "성공"
             ),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(
-                    responseCode = "400",
-                    description = "잘못된 요청",
-                    content = @Content(schema = @Schema(implementation = ApiResponse.class))
-            )
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH001",
+                    description = "acess 토큰 만료",
+                    content = @Content(schema = @Schema(implementation = ApiResponse.class))),
     })
 
-    @PostMapping
+
     public ApiResponse<GroResponseDTO> createGro(
             @Parameter(description = "Bearer {kakao_access_token}")
             @RequestHeader("Authorization") String authorization,
