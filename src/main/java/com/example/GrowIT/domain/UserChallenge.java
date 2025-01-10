@@ -3,10 +3,8 @@ package com.example.GrowIT.domain;
 
 import com.example.GrowIT.domain.common.BaseEntity;
 import com.example.GrowIT.domain.enums.ChallengeStatus;
-import com.example.GrowIT.domain.enums.ChallengeType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
@@ -19,9 +17,9 @@ public class UserChallenge extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "challenge_id", nullable = false)
