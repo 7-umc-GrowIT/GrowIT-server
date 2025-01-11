@@ -1,8 +1,7 @@
 package com.example.GrowIT.web.controller;
 
-import com.example.GrowIT.domain.Gro;
-import com.example.GrowIT.web.dto.GroRequestDTO;
-import com.example.GrowIT.web.dto.GroResponseDTO;
+import com.example.GrowIT.web.dto.GroDTO.GroRequestDTO;
+import com.example.GrowIT.web.dto.GroDTO.GroResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -46,11 +45,6 @@ public class GroController {
     ) {
         // Service를 통해 엔티티 생성
         //Gro gro = groService.createGro(request);
-
-
-
-        // Converter를 통해 DTO로 변환
-//        return com.example.GrowIT.apiPayload.ApiResponse.onSuccess(GroConverter.toGroResponseDTO(gro));
-        return null;
+        return ApiResponse.onSuccess(null);
     }
 }

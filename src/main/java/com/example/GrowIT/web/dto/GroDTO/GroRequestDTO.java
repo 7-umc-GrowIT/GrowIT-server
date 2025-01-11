@@ -1,4 +1,4 @@
-package com.example.GrowIT.web.dto;
+package com.example.GrowIT.web.dto.GroDTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

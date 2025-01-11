@@ -1,29 +1,31 @@
 package com.example.GrowIT.domain;
 
 import com.example.GrowIT.domain.common.BaseEntity;
+import com.example.GrowIT.domain.enums.ItemCategory;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Gro extends BaseEntity {
+public class Item extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     @Column(nullable = false, length = 50)
     private String name;
 
     @Column(nullable = false)
-    @ColumnDefault("1")
-    private Integer level;
+    private Integer price;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ItemCategory category;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String imageUrl;
 }

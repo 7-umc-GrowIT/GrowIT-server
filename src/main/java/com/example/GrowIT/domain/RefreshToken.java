@@ -3,27 +3,27 @@ package com.example.GrowIT.domain;
 import com.example.GrowIT.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Gro extends BaseEntity {
+public class RefreshToken extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false, length = 50)
-    private String name;
+    @Column(nullable = false, length = 512)
+    private String refreshToken;
 
     @Column(nullable = false)
-    @ColumnDefault("1")
-    private Integer level;
+    private LocalDateTime expiryDate;
 }
